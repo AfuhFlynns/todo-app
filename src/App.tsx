@@ -141,30 +141,9 @@ export default function App() {
     setTodoList(newTodoList);
   };
 
-  const handleCheckDueDate = () => {
-    const date = new Date();
-    const newTodoList = todoList.filter(
-      (item: TodoItem) => item.dueDate !== date
-    );
-    if (newTodoList.length === 0) {
-      return;
-    } else {
-      const confirmDelete = prompt(
-        `Items with due date set to today will be deleted. Enter yes or no`
-      );
-      if (confirmDelete === "Yes" || "yes") setTodoList(newTodoList);
-    }
-  };
-
   useEffect(() => {
     calculateActiveTodos();
   }, [todoList, todokey]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      handleCheckDueDate();
-    }, 5000);
-  }, []);
 
   return (
     <div
