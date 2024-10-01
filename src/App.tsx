@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid"; // Correctly importing v4 from uuid
 import DisplayTodo from "./components/displayTodo";
 import useLocalTheme from "./components/utils/useLocalTheme";
@@ -19,7 +19,10 @@ const themekey = "FEM_Theme";
 const todokey = "FEM_Todo";
 
 export default function App() {
-  const [prefersTheme, setPrefersTheme] = useLocalTheme(themekey, "light");
+  const [prefersTheme, setPrefersTheme] = useLocalTheme(themekey, "light") as [
+    string,
+    React.Dispatch<React.SetStateAction<string | null>>
+  ];
   const [input, setInput] = useState("");
   const [activeTodos, setActiveTodos] = useState(0);
   const [activeTab, setActiveTab] = useState("all");
@@ -128,7 +131,7 @@ export default function App() {
   const handleSaveUpdatedValue = (
     id: string,
     newText: string,
-    dueDate?: string
+    dueDate?: string | Date
   ) => {
     const newTodoItem = {
       id: id,

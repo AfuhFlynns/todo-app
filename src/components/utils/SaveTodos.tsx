@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const SaveTodos = (key: string) => {
   const [todoList, setTodoList] = useState(() => {
     try {
-      const savedTodos = JSON.parse(localStorage.getItem(key)) || [];
-      return savedTodos;
+      const savedTodos = localStorage.getItem(key);
+      return savedTodos ? JSON.parse(savedTodos) : [];
     } catch (error: any) {
       console.error(error.message);
     }

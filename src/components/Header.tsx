@@ -6,7 +6,7 @@ type params = {
   handleThemeSwitch: () => void;
   handleSubmitForm: (e: any) => void;
   handleTodoInput: (e: any) => void;
-  prefersTheme: string;
+  prefersTheme: string | null;
   input: string;
 };
 const Header = ({

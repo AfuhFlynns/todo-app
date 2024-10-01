@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useLocalTheme = (key: string, newTheme: string) => {
-  const [theme, setTheme] = useState(() => {
+  const [theme, setTheme] = useState<string | null>(() => {
     let storedTheme: string | null = "";
     try {
       storedTheme = localStorage.getItem(key);
@@ -23,7 +23,7 @@ const useLocalTheme = (key: string, newTheme: string) => {
     }
   }, [key, theme, newTheme]);
 
-  return [theme, setTheme];
+  return [String(theme), setTheme];
 };
 
 export default useLocalTheme;
